@@ -1,0 +1,32 @@
+:root {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #244b48;
+  background-color: #faf7ef;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.appIntro {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+}
+
+p {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
