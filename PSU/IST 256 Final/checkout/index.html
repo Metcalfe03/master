@@ -13,7 +13,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
     />
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://js.stripe.com/clover/stripe.js"></script>
   </head>
@@ -22,7 +22,7 @@
     <!-- simplified navbar -->
     <nav class="navbar navbar-dark bg-black border-bottom border-success">
       <div class="container">
-        <a class="navbar-brand text-success fw-bold" href="/index.html">
+        <a class="navbar-brand text-success fw-bold" href="../index.html">
           DEFCON <span class="text-light">34</span>
         </a>
       </div>
@@ -138,7 +138,7 @@
 
     <!-- JS imports -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/merchandise.js"></script>
+    <script src="../js/merchandise.js"></script>
 
     <script>
       // render checkout cart
@@ -259,7 +259,7 @@ $${itemTotal.toFixed(2)}
           localStorage.removeItem("cart");
 
           setTimeout(() => {
-            window.location.href = "/index.html";
+            window.location.href = "../index.html";
           }, 4000);
         }
       });

@@ -1,3 +1,7 @@
+// Resolve static assets from this script so nested hosting paths also work.
+const merchandiseRoot = new URL("../", document.currentScript.src);
+const merchandiseURL = (path) => new URL(path.replace(/^\//, ""), merchandiseRoot).href;
+
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -131,7 +135,7 @@ function loadProductPage() {
   const productId = getProductIdFromURL();
   if (!productId) return;
 
-  fetch("/data/products.json")
+  fetch(merchandiseURL("data/products.json"))
     .then((res) => res.json())
     .then((products) => {
       const product = products.find((p) => p.id === productId);
@@ -139,10 +143,10 @@ function loadProductPage() {
 
       container.innerHTML = `
       <div class="col-md-6">
-        <img id="mainImage" src="${product.images.product_front}" class="img-fluid border border-success rounded mb-3">
+        <img id="mainImage" src="${merchandiseURL(product.images.product_front)}" class="img-fluid border border-success rounded mb-3">
         <div class="d-flex gap-2">
-          <img src="${product.images.product_front}" class="img-thumbnail thumb" width="100">
-          <img src="${product.images.product_back}" class="img-thumbnail thumb" width="100">
+          <img src="${merchandiseURL(product.images.product_front)}" class="img-thumbnail thumb" width="100">
+          <img src="${merchandiseURL(product.images.product_back)}" class="img-thumbnail thumb" width="100">
         </div>
       </div>
       <div class="col-md-6">
@@ -203,7 +207,7 @@ function loadMerchGallery() {
   const galleryContainer = document.getElementById("merchGallery");
   if (!galleryContainer) return;
 
-  fetch("/data/products.json")
+  fetch(merchandiseURL("data/products.json"))
     .then((res) => res.json())
     .then((products) => {
       let html = "";
@@ -211,14 +215,14 @@ function loadMerchGallery() {
         html += `
         <div class="col-md-4 merch-item">
           <div class="card bg-dark text-light border-success h-100">
-            <a href="/product/index.html?id=${product.id}">
-              <img src="${product.images.product_front}" class="card-img-top" alt="${product.name}">
+            <a href="${merchandiseURL("product/index.html")}?id=${product.id}">
+              <img src="${merchandiseURL(product.images.product_front)}" class="card-img-top" alt="${product.name}">
             </a>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">${product.name}</h5>
               <p class="card-text">${product.description}</p>
               <p class="fw-bold">$${product.price.amount}</p>
-              <a href="/product/index.html?id=${product.id}" class="btn btn-success mt-auto">View Details</a>
+              <a href="${merchandiseURL("product/index.html")}?id=${product.id}" class="btn btn-success mt-auto">View Details</a>
             </div>
           </div>
         </div>`;
@@ -289,7 +293,7 @@ $("#checkoutForm").submit(function (e) {
       toast.show();
       localStorage.removeItem("cart");
       setTimeout(() => {
-        window.location.href = "/index.html";
+        window.location.href = merchandiseURL("index.html");
       }, 4000);
     },
     error: function (xhr, status, error) {
