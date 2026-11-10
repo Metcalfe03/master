@@ -1,5 +1,7 @@
 # Fantasy Anime League
 
+[Live preview](https://metcalfe03.github.io/master/fantasyAnimeLeague/)
+
 Fantasy Anime League (FAL) is a web app for drafting anime and competing with friends throughout an anime season. The planned app includes accounts, private leagues, snake drafts, weekly lineups, head-to-head matchups, and season standings.
 
 ## Current status
