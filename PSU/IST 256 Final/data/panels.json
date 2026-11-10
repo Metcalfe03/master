@@ -1,0 +1,28 @@
+[
+  {
+    "id": "DC001",
+    "speaker": "Pete Harvey",
+    "title": "Hacking",
+    "category": "Ethical Hacking",
+    "room": "204",
+    "duration": 45,
+    "capacity": 48,
+    "description": "Hacking for dummies",
+    "status": "denied",
+    "moderatorComment": "not appropriate",
+    "submittedAt": "2026-03-29T14:32:44.851Z"
+  },
+  {
+    "id": "DC002",
+    "speaker": "Steve K",
+    "title": "WiFi",
+    "category": "Network Security",
+    "room": "202",
+    "duration": 33,
+    "capacity": 48,
+    "description": "WiFi Router Security",
+    "status": "approved",
+    "moderatorComment": "approved",
+    "submittedAt": "2026-03-29T14:45:25.051Z"
+  }
+]

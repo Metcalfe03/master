@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Panel Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!-- Validation helper (from signup.html) -->
+    <script>
+      function validateField(input, message) {
+        const alertDiv = input.closest(".mb-3").querySelector(".alert");
+        alertDiv.classList.add("d-none");
+        input.classList.remove("is-invalid");
+
+        if (input.value.trim() === "") {
+          alertDiv.textContent = message;
+          alertDiv.classList.remove("d-none");
+          input.classList.add("is-invalid");
+        }
+      }
+    </script>
+  </head>
+
+  <body class="bg-black text-light">
+    <!-- header with navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold text-success" href="/index.html">
+            DEFCON<span class="text-light"> 34</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#defconNavbar"
+            aria-controls="defconNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="defconNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active text-success"
+                  href="/panels/index.html"
+                  >Panels</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/merch/index.html">Merch</a>
+              </li>
+            </ul>
+
+            <!-- Register button -->
+            <div class="d-flex">
+              <a href="/signup/index.html" class="btn btn-success">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero section (same style as signup) -->
+    <section class="hero text-center text-light bg-black py-5">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-success">Panel Submission</h1>
+        <p class="lead text-light">
+          Submit a talk, workshop, or panel request for DEF CON 34
+        </p>
+      </div>
+    </section>
+
+    <!-- Submission form -->
+    <section class="py-5">
+      <div class="container">
+        <div class="card bg-dark border-success shadow-lg">
+          <div class="card-body">
+            <h2 class="fw-bold text-success mb-4">
+              Speaker / Panel Submission
+            </h2>
+
+            <div id="formMessage" class="alert d-none mb-4"></div>
+
+            <form id="panelForm" class="mb-4">
+              <!-- Speaker Name (required) -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="speakerName"
+                  >Speaker Name*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-person"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="speakerName"
+                    required
+                    onblur="validateField(this, 'Speaker name is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Title (required) -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="panelTitle"
+                  >Panel Title*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-card-text"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="panelTitle"
+                    required
+                    onblur="validateField(this, 'Panel title is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Category (required) -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="category"
+                  >Category*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-diagram-3"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success form-glow"
+                    id="category"
+                    required
+                    onblur="validateField(this, 'Category is required')"
+                  >
+                    <option value="" disabled selected>
+                      Select a category
+                    </option>
+                    <option value="Network Security">Network Security</option>
+                    <option value="Ethical Hacking">Ethical Hacking</option>
+                    <option value="Social Engineering">
+                      Social Engineering
+                    </option>
+                    <option value="Web Security">Web Security</option>
+                    <option value="Lockpicking">Hardware</option>
+                    <option value="General">General</option>
+                  </select>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Room number (required) -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="room"
+                  >Room Number*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-door-open"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success form-glow"
+                    id="room"
+                    required
+                    onblur="validateField(this, 'Room number is required')"
+                  >
+                    <option value="" disabled selected>Select a room</option>
+
+                    <optgroup label="Capacity: 30">
+                      <option value="101">101</option>
+                      <option value="103">103</option>
+                      <option value="104">104</option>
+                      <option value="106">106</option>
+                      <option value="107">107</option>
+                      <option value="110">110</option>
+                    </optgroup>
+
+                    <optgroup label="Capacity: 48">
+                      <option value="202">202</option>
+                      <option value="204">204</option>
+                      <option value="205">205</option>
+                      <option value="211">211</option>
+                      <option value="212">212</option>
+                      <option value="215">215</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+                <!-- Room number helper text -->
+                <div class="form-text text-secondary">
+                  100-level rooms hold 30 people. 200-level rooms hold 48
+                  people.
+                </div>
+
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Duration (required) -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="duration"
+                  >Duration (minutes)*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-clock"></i>
+                  </span>
+                  <input
+                    type="number"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="duration"
+                    required
+                    min="1"
+                    placeholder="60"
+                    onblur="validateField(this, 'Duration is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Capacity -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="capacity"
+                  >Room Capacity</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-people"></i>
+                  </span>
+                  <input
+                    type="number"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="capacity"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <!-- Panel Description -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="description"
+                  >Panel Description</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-chat-left-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="description"
+                    rows="4"
+                    placeholder="Briefly describe your panel topic..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-success btn-glow"
+                id="submitPanelBtn"
+              >
+                Submit
+              </button>
+            </form>
+
+            <!-- Search -->
+            <br /><br />
+            <div class="row g-2 align-items-end">
+              <div class="col-md-6">
+                <label class="form-label text-light" for="searchSpeaker"
+                  >Search</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-black text-light border-success form-glow"
+                  id="searchSpeaker"
+                  placeholder="Type a speaker name or panel ID..."
+                />
+              </div>
+              <div class="col-md-6 d-flex gap-2">
+                <button
+                  type="button"
+                  id="searchBtn"
+                  class="btn btn-success mt-4 mt-md-0"
+                >
+                  Search
+                </button>
+                <button
+                  type="button"
+                  id="clearSearchBtn"
+                  class="btn btn-outline-light mt-4 mt-md-0"
+                >
+                  Show All
+                </button>
+              </div>
+            </div>
+
+            <!-- table of submitted panels -->
+            <h3 class="fw-bold text-success mt-5 mb-3">Panels</h3>
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark text-light">
+                <thead class="border-success">
+                  <tr>
+                    <th>ID</th>
+                    <th>Speaker</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Room</th>
+                    <th>Duration</th>
+                    <th>Capacity</th>
+                    <th>Status</th>
+                    <th>Moderator Comment</th>
+                  </tr>
+                </thead>
+                <tbody id="panelTable"></tbody>
+              </table>
+
+              <!-- Link to Approval Page -->
+              <a href="../approval/index.html" class="btn btn-outline-success">
+                <i class="bi bi-shield-check me-1"></i> Approval Dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer with external links -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a
+            href="https://x.com/defcon"
+            class="text-success me-3"
+            target="_blank"
+            >Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.instagram.com/wearedefcon/"
+            class="text-success"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- PanelJS -->
+    <script src="../js/panels.js"></script>
+  </body>
+</html>

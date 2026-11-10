@@ -1,0 +1,29 @@
+.hero {
+  background: linear-gradient(to top, #212529cb, #720000);
+  height: 70vh;
+}
+
+.hero-small {
+  min-height: auto;
+  height: auto;
+  padding: 40px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.merch-item {
+  transition: transform 0.2s;
+}
+
+.merch-item:hover {
+  transform: scale(1.03);
+}

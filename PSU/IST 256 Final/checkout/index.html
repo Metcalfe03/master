@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Merch Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://js.stripe.com/clover/stripe.js"></script>
+  </head>
+
+  <body class="bg-dark text-light">
+    <!-- simplified navbar -->
+    <nav class="navbar navbar-dark bg-black border-bottom border-success">
+      <div class="container">
+        <a class="navbar-brand text-success fw-bold" href="/index.html">
+          DEFCON <span class="text-light">34</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <section
+      class="pt-5 text-center py-5 mb-5"
+      style="background: linear-gradient(to top, #212529cb, #720000)"
+    >
+      <h1 class="text-success fw-bold">Checkout</h1>
+    </section>
+
+    <div class="container py-5 border border-success">
+      <div class="row">
+        <!-- cart summary -->
+        <div class="col-md-5">
+          <h3 class="text-success mb-4">Your Cart</h3>
+
+          <div id="cartItems"></div>
+
+          <h4 class="mt-4">Total: $<span id="cartTotal">0.00</span></h4>
+        </div>
+
+        <!-- checkout form -->
+        <div class="col-md-7">
+          <h3 class="text-success mb-4">Shipping & Payment</h3>
+
+          <form id="checkoutForm">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" />
+              <div class="text-danger" id="nameError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" />
+              <div class="text-danger" id="emailError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Shipping Address</label>
+              <input type="text" class="form-control" id="address" />
+              <div class="text-danger" id="addressError"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 mb-3">
+                <label class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="card" />
+                <div class="text-danger" id="cardError"></div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" />
+                <div class="text-danger" id="cvvError"></div>
+              </div>
+            </div>
+
+            <button class="btn btn-success mt-3 w-100" type="submit">
+              Complete Order
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- success toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+      <div
+        id="checkoutToast"
+        class="toast align-items-center text-white bg-success border-0"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Order placed successfully!</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a
+            href="https://x.com/defcon"
+            class="text-success me-3"
+            target="_blank"
+            >Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.instagram.com/wearedefcon/"
+            class="text-success"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS imports -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/merchandise.js"></script>
+
+    <script>
+      // render checkout cart
+      function renderCheckoutCart() {
+        const cart = getCart();
+        const container = $("#cartItems");
+        const totalEl = $("#cartTotal");
+
+        if (cart.length === 0) {
+          container.html("<p>Your cart is empty.</p>");
+          totalEl.text("0.00");
+          return;
+        }
+
+        let html = "";
+        let total = 0;
+
+        cart.forEach((item) => {
+          const qty = item.quantity || 1;
+          const itemTotal = item.price * qty;
+
+          total += itemTotal;
+
+          html += `
+<div class="card bg-dark text-light border-success mb-3 p-3"
+     data-id="${item.id}"
+     data-size="${item.size}">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+<strong>${item.name}</strong><br>
+Size: ${item.size}<br>
+Quantity: ${qty}<br>
+$${itemTotal.toFixed(2)}
+</div>
+
+<div class="d-flex gap-1">
+
+<button class="btn btn-danger btn-sm checkoutMinus">-</button>
+<button class="btn btn-success btn-sm checkoutPlus">+</button>
+
+</div>
+
+</div>
+</div>`;
+        });
+
+        container.html(html);
+        totalEl.text(total.toFixed(2));
+      }
+
+      // cart quantity
+      $(document).on("click", ".checkoutMinus", function () {
+        const card = $(this).closest(".card");
+        const id = card.data("id");
+        const size = card.data("size");
+
+        removeFromCartByIdSize(id, size);
+        renderCheckoutCart();
+      });
+
+      $(document).on("click", ".checkoutPlus", function () {
+        const card = $(this).closest(".card");
+        const id = card.data("id");
+        const size = card.data("size");
+
+        let cart = getCart();
+        const item = cart.find((i) => i.id === id && i.size === size);
+
+        if (item) {
+          item.quantity += 1;
+        }
+
+        setCart(cart);
+        renderCheckoutCart();
+      });
+
+      // form validation
+      $("#checkoutForm").submit(function (e) {
+        e.preventDefault();
+        let valid = true;
+
+        $(".text-danger").text("");
+
+        if ($("#name").val().trim() === "") {
+          $("#nameError").text("Name required");
+          valid = false;
+        }
+
+        if ($("#email").val().trim() === "") {
+          $("#emailError").text("Email required");
+          valid = false;
+        }
+
+        if ($("#address").val().trim() === "") {
+          $("#addressError").text("Address required");
+          valid = false;
+        }
+
+        if ($("#card").val().trim().length < 12) {
+          $("#cardError").text("Invalid card number");
+          valid = false;
+        }
+
+        if ($("#cvv").val().trim().length < 3) {
+          $("#cvvError").text("Invalid CVV");
+          valid = false;
+        }
+
+        if (valid) {
+          const toast = new bootstrap.Toast(
+            document.getElementById("checkoutToast"),
+          );
+
+          toast.show();
+
+          localStorage.removeItem("cart");
+
+          setTimeout(() => {
+            window.location.href = "/index.html";
+          }, 4000);
+        }
+      });
+
+      $(document).ready(function () {
+        renderCheckoutCart();
+      });
+    </script>
+  </body>
+</html>

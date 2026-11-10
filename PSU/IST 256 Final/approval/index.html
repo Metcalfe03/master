@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Panel Approval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body class="bg-black text-light">
+    <!-- header with navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold text-success" href="/index.html">
+            DEFCON<span class="text-light"> 34</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#defconNavbar"
+            aria-controls="defconNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="defconNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/panels/index.html">Panels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/merch/index.html">Merch</a>
+              </li>
+            </ul>
+
+            <div class="d-flex">
+              <a href="/signup/index.html" class="btn btn-success">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero hero-small text-center text-light">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-success">Panel Approval</h1>
+        <p class="lead text-light">
+          Review submitted talks, workshops, and panel requests for DEF CON 34
+        </p>
+      </div>
+    </section>
+
+    <!-- Approval dashboard -->
+    <section class="py-5">
+      <div class="container">
+        <div class="card bg-dark border-success shadow-lg">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="fw-bold text-success mb-0">Moderator Dashboard</h2>
+
+              <a href="/panels/index.html" class="btn btn-outline-success">
+                <i class="bi bi-arrow-left me-1"></i> Back to Submission
+              </a>
+            </div>
+
+            <p class="text-light mb-4">
+              Review each submitted panel, leave moderator feedback, and approve
+              or deny the request.
+            </p>
+
+            <div id="approvalMessage" class="alert d-none mb-4"></div>
+
+            <h3 class="fw-bold text-success mt-4 mb-3">Submitted Panels</h3>
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark text-light">
+                <thead class="border-success">
+                  <tr>
+                    <th>ID</th>
+                    <th>Speaker</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Room</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Moderator Comment</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="approvalTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer with external links -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a
+            href="https://x.com/defcon"
+            class="text-success me-3"
+            target="_blank"
+            >Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.instagram.com/wearedefcon/"
+            class="text-success"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/approval.js"></script>
+  </body>
+</html>

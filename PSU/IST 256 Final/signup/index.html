@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap + Icons + CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <script>
+      function validateField(input, message) {
+        const alertDiv = input.closest(".mb-3").querySelector(".alert");
+        alertDiv.classList.add("d-none");
+        input.classList.remove("is-invalid");
+
+        if (input.value.trim() === "") {
+          alertDiv.textContent = message;
+          alertDiv.classList.remove("d-none");
+          input.classList.add("is-invalid");
+        }
+      }
+    </script>
+  </head>
+
+  <body class="bg-black text-light">
+    <!-- header with navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold text-success" href="../index.html">
+            DEFCON<span class="text-light"> 34</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#defconNavbar"
+            aria-controls="defconNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="defconNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-success" href="/index.html"
+                  >Home</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/panels/index.html">Panels</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/merch/index.html">Merch</a>
+              </li>
+            </ul>
+
+            <!-- register button -->
+            <div class="d-flex">
+              <a href="index.html" class="btn btn-success">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- hero section -->
+    <section class="hero text-center text-light bg-black py-5">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-success">Register for DEF CON 34</h1>
+        <p class="lead text-light">
+          Join the premier hacker convention in Las Vegas, NV
+        </p>
+      </div>
+    </section>
+
+    <!-- registration form -->
+    <section class="py-5">
+      <div class="container">
+        <div class="card bg-dark border-success shadow-lg">
+          <div class="card-body">
+            <h2 class="fw-bold text-success mb-4">Conference Registration</h2>
+
+            <form id="registrationForm" class="mb-4">
+              <!-- name -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="fullName"
+                  >Full Name*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-person"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="fullName"
+                    required
+                    onblur="validateField(this, 'Full name is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- email -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="email"
+                  >Email Address*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="email"
+                    required
+                    onblur="validateField(this, 'Valid email is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- phone -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="phone"
+                  >Phone Number</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-telephone"></i>
+                  </span>
+                  <input
+                    type="tel"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="phone"
+                    placeholder="123-456-7890"
+                    pattern="^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$"
+                  />
+                </div>
+              </div>
+
+              <!-- age -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="age">Age*</label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-calendar"></i>
+                  </span>
+                  <input
+                    type="number"
+                    class="form-control bg-black text-light border-success form-glow"
+                    id="age"
+                    required
+                    min="18"
+                    max="100"
+                    onblur="validateField(this, 'This field is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- affiliation -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="affiliation"
+                  >Affiliation*</label
+                >
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-building"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success form-glow"
+                    id="affiliation"
+                    required
+                    onblur="validateField(this, 'This field is required')"
+                  >
+                    <option value="" disabled selected>
+                      Select your affiliation
+                    </option>
+                    <option value="student">Student</option>
+                    <option value="speaker">Speaker</option>
+                    <option value="researcher">Researcher</option>
+                    <option value="none">None</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-glow">
+                Submit
+              </button>
+            </form>
+
+            <!-- table of registered attendees -->
+            <h3 class="fw-bold text-success mt-5 mb-3">Registered Attendees</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark text-light">
+                <thead class="border-success">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Affiliation</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="attendeeTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a href="https://x.com/defcon" class="text-success me-3">Twitter</a>
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            >LinkedIn</a
+          >
+          <a href="https://www.instagram.com/wearedefcon/" class="text-success"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/registration.js"></script>
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Attend a Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <script>
+      function validateField(input, message) {
+        const alertDiv = input.closest(".mb-3").querySelector(".alert");
+        alertDiv.classList.add("d-none");
+        input.classList.remove("is-invalid");
+        if (input.type === "checkbox" && !input.checked) {
+          alertDiv.textContent = message;
+          alertDiv.classList.remove("d-none");
+          input.classList.add("is-invalid");
+          return;
+        }
+        if (input.value.trim() === "") {
+          alertDiv.textContent = message;
+          alertDiv.classList.remove("d-none");
+          input.classList.add("is-invalid");
+        }
+      }
+    </script>
+  </head>
+
+  <body class="bg-black text-light">
+    <!-- header with navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold text-success" href="/index.html">
+            DEFCON<span class="text-light"> 34</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#defconNavbar"
+            aria-controls="defconNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="defconNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/panels/index.html">Panels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/merch/index.html">Merch</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <a href="/signup/index.html" class="btn btn-success">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero text-center text-light bg-black py-5">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-success">Attend a Panel</h1>
+        <p class="lead text-light">
+          Reserve your place for a DEF CON 34 talk or panel session
+        </p>
+      </div>
+    </section>
+
+    <!-- Attendance form -->
+    <section class="py-5">
+      <div class="container">
+        <div class="card bg-dark border-success shadow-lg">
+          <div class="card-body">
+            <h2 class="fw-bold text-success mb-4">Panel Attendance Request</h2>
+
+            <form id="attendForm" class="mb-4">
+              <!-- Full Name -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="attendeeName">
+                  Full Name*
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-person"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control bg-black text-light border-success"
+                    id="attendeeName"
+                    required
+                    onblur="validateField(this, 'Full name is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="attendeeEmail">
+                  Email Address*
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    class="form-control bg-black text-light border-success"
+                    id="attendeeEmail"
+                    required
+                    onblur="validateField(this, 'Email address is required')"
+                  />
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Panel Selection -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="selectedPanel">
+                  Select a Panel*
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-mic"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success"
+                    id="selectedPanel"
+                    required
+                    onblur="validateField(this, 'Please select a panel')"
+                  >
+                    <option value="" disabled selected>Select a panel</option>
+                    <option value="network-security">Network Security</option>
+                    <option value="ethical-hacking">Ethical Hacking</option>
+                    <option value="social-engineering">
+                      Social Engineering
+                    </option>
+                    <option value="web-security">Web Security</option>
+                    <option value="hardware">Hardware</option>
+                    <option value="general">General</option>
+                  </select>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Participation Type -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="participationType">
+                  Participation Type*
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-broadcast"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success"
+                    id="participationType"
+                    required
+                    onblur="
+                      validateField(this, 'Please select a participation type')
+                    "
+                  >
+                    <option value="" disabled selected>
+                      Select participation type
+                    </option>
+                    <option value="in-person">In-Person</option>
+                    <option value="virtual">Virtual</option>
+                    <option value="hybrid">Hybrid</option>
+                  </select>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Session Day -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="sessionDay">
+                  Session Day*
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-calendar-event"></i>
+                  </span>
+                  <select
+                    class="form-select bg-black text-light border-success"
+                    id="sessionDay"
+                    required
+                    onblur="validateField(this, 'Please select a session day')"
+                  >
+                    <option value="" disabled selected>Select a day</option>
+                    <option value="Day 1">Day 1</option>
+                    <option value="Day 2">Day 2</option>
+                    <option value="Day 3">Day 3</option>
+                  </select>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <!-- Notes -->
+              <div class="mb-3">
+                <label class="form-label text-light" for="attendanceNotes">
+                  Notes / Requests
+                </label>
+                <div class="input-group">
+                  <span
+                    class="input-group-text text-success bg-black border-success"
+                  >
+                    <i class="bi bi-chat-left-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control bg-black text-light border-success"
+                    id="attendanceNotes"
+                    rows="3"
+                    placeholder="Optional accessibility requests, questions, or comments"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Confirmation -->
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input border-success"
+                    type="checkbox"
+                    id="confirmAttendance"
+                    onblur="
+                      validateField(
+                        this,
+                        'You must confirm your attendance details',
+                      )
+                    "
+                  />
+                  <label
+                    class="form-check-label text-light"
+                    for="confirmAttendance"
+                  >
+                    I confirm that my attendance details are correct.*
+                  </label>
+                </div>
+                <div class="alert alert-danger mt-2 d-none"></div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-success"
+                id="submitAttendanceBtn"
+              >
+                Confirm Attendance
+              </button>
+            </form>
+
+            <div id="attendanceMessage" class="mt-4"></div>
+            <div id="attendanceJsonPreview" class="mt-3"></div>
+            <div id="reactRoot" class="mt-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a
+            href="https://x.com/defcon"
+            class="text-success me-3"
+            target="_blank"
+            >Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.instagram.com/wearedefcon/"
+            class="text-success"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="/js/attend.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "prod_1",
+    "name": "DEFCON Gamer T-Shirt",
+    "description": "T-Shirt with various spots (each shirt unique)",
+    "brand": "Group404",
+    "category": "Clothing",
+    "price": {
+      "currency": "USD",
+      "amount": 19.99
+    },
+    "images": {
+      "product_front": "/images/products/defcon male front.jpg",
+      "product_back": "/images/products/defcon male back.jpg"
+    }
+  },
+  {
+    "id": "prod_2",
+    "name": "DEFCON Hacker Tee",
+    "description": "Minimal green T-Shirt",
+    "brand": "Group404",
+    "category": "Clothing",
+    "price": {
+      "currency": "USD",
+      "amount": 19.99
+    },
+    "images": {
+      "product_front": "/images/products/defcon female front.jpg",
+      "product_back": "/images/products/defcon female back.jpg"
+    }
+  }
+]

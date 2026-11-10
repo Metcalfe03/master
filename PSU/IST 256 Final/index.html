@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DEF CON - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap + Icons + CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+
+  <body class="bg-dark text-light">
+    <!-- header with navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold text-success" href="/index.html">
+            DEFCON<span class="text-light"> 34</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#defconNavbar"
+            aria-controls="defconNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="defconNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-success" href="/index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/panels/index.html">Panels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/merch/index.html">Merch</a>
+              </li>
+            </ul>
+
+            <!-- register and cart -->
+            <div class="d-flex align-items-center gap-2">
+              <a href="/signup/index.html" class="btn btn-success">Register</a>
+              <button
+                id="cartButton"
+                class="btn btn-outline-success position-relative"
+              >
+                <i class="bi bi-cart4"></i> Cart
+                <span
+                  id="cartCount"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  >0</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- hero section -->
+    <section class="hero text-center text-light bg-black py-5">
+      <div class="container">
+        <h1 class="display-4 fw-bold">DEF CON 34</h1>
+        <p class="lead text-success">
+          The Premier Hacker Convention in Las Vegas, NV
+        </p>
+        <a href="/signup/index.html" class="btn btn-success btn-lg mt-3"
+          >Register Now</a
+        >
+      </div>
+    </section>
+
+    <!-- about section -->
+    <section class="about py-5 bg-dark text-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h2 class="fw-bold text-success">About DEF CON</h2>
+            <p>
+              DEF CON is one of the world's largest and most notable hacker
+              conventions. For over three decades, security enthusiasts,
+              researchers, and professionals gather to learn, share knowledge,
+              and participate in hands-on activities.
+            </p>
+            <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+          </div>
+          <div class="col-md-6">
+            <img
+              src="https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg"
+              alt="cybersecurity image"
+              class="img-fluid rounded border border-success"
+              style="max-width: 60%; height: auto; float: right"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- schedule section -->
+    <section class="schedule py-5 bg-black text-light">
+      <div class="container">
+        <h2 class="text-center fw-bold text-success mb-5">
+          Conference Schedule
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card bg-dark text-light border-success h-100">
+              <div class="card-body">
+                <h5 class="card-title text-success">Day 1: Workshops</h5>
+                <p class="card-text">
+                  Kick off with hands-on workshops covering cybersecurity,
+                  penetration testing, and reverse engineering.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark text-light border-success h-100">
+              <div class="card-body">
+                <h5 class="card-title text-success">Day 2: Talks & Panels</h5>
+                <p class="card-text">
+                  Attend keynote speeches, talks, and panels by leading experts
+                  in the hacking and security world.
+                </p>
+                <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+                  <a href="/panels/index.html" class="btn btn-outline-success">
+                    Submit a Panel
+                  </a>
+                  <a href="/attend/index.html" class="btn btn-outline-success">
+                    Attend a Panel
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark text-light border-success h-100">
+              <div class="card-body">
+                <h5 class="card-title text-success">Day 3: CTF & Villages</h5>
+                <p class="card-text">
+                  Participate in Capture The Flag challenges, or explore the
+                  various specialized villages and hands-on labs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- speaker section -->
+    <section class="speakers py-5 bg-dark text-light">
+      <div class="container">
+        <h2 class="text-center fw-bold text-success mb-5">Featured Speakers</h2>
+        <div class="row g-4">
+          <!-- speaker 1 -->
+          <div class="col-md-3 text-center">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Dark_Tangent_%287546598054%29.jpg/960px-Dark_Tangent_%287546598054%29.jpg"
+              class="img-fluid rounded-circle mb-2"
+              alt="Jeff Moss Founder of DEF CON"
+              style="width: 200px; height: 200px; object-fit: cover"
+            />
+            <h6 class="fw-bold text-success">Jeff Moss</h6>
+            <p class="small">DEF CON founder</p>
+          </div>
+
+          <!-- speaker 2 -->
+          <div class="col-md-3 text-center">
+            <img
+              src="https://pbs.twimg.com/profile_images/1973860676108943360/b2bQAgy2_400x400.jpg"
+              class="img-fluid rounded-circle mb-2"
+              alt="Security Researcher Tal Skverer"
+              style="width: 200px; height: 200px; object-fit: cover"
+            />
+            <h6 class="fw-bold text-success">Tal Skverer</h6>
+            <p class="small">Security Researcher</p>
+          </div>
+
+          <!-- speaker 3 -->
+          <div class="col-md-3 text-center">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Mikko_Hypp%C3%B6nen_-_2021_%28cropped%29.jpg/960px-Mikko_Hypp%C3%B6nen_-_2021_%28cropped%29.jpg"
+              class="img-fluid rounded-circle mb-2"
+              alt="Security Expert Mikko Hyppönen"
+              style="width: 200px; height: 200px; object-fit: cover"
+            />
+            <h6 class="fw-bold text-success">Mikko Hyppönen</h6>
+            <p class="small">Security Expert</p>
+          </div>
+
+          <!-- speaker 4 -->
+          <div class="col-md-3 text-center">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Richard_Thieme_2004.JPG/960px-Richard_Thieme_2004.JPG"
+              class="img-fluid rounded-circle mb-2"
+              alt="Author and professional speaker Richard Thieme"
+              style="width: 200px; height: 200px; object-fit: cover"
+            />
+            <h6 class="fw-bold text-success">Richard Thieme</h6>
+            <p class="small">Author and Professional Speaker</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer with links -->
+    <footer class="bg-black text-light py-4 border-top border-success">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">&copy; 2026 DEF CON. All rights reserved.</p>
+        <div>
+          <a
+            href="https://x.com/defcon"
+            class="text-success me-3"
+            target="_blank"
+            >Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/company/def-con"
+            class="text-success me-3"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://www.instagram.com/wearedefcon/"
+            class="text-success"
+            target="_blank"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div
+      class="modal fade"
+      id="cartModal"
+      tabindex="-1"
+      aria-labelledby="cartModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light border-success">
+          <div class="modal-header">
+            <h5 class="modal-title text-success" id="cartModalLabel">
+              Your Cart
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="cartModalBody">
+            <!-- Cart items loaded dynamically -->
+          </div>
+          <div class="modal-footer">
+            <a href="/checkout/index.html" class="btn btn-success w-100"
+              >Proceed to Checkout</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+      <div
+        id="cartToast"
+        class="toast align-items-center text-white bg-success border-0"
+        role="alert"
+      >
+        <div class="d-flex">
+          <div class="toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/merchandise.js"></script>
+  </body>
+</html>
